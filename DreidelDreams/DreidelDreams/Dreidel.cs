@@ -29,12 +29,18 @@ namespace DreidelDreams
       RotateSpeed = 7f;
       Clockwise = true;
       Colour = Color.White;
-      DestRect = new Rectangle(x, y, 147, 180);
+      DestRect = new Rectangle(x, y, 147/2, 180/2);
       SourceRect = new Rectangle(0, 0, 147, 180);
     }
 
     public void Update(GameTime gameTime)
     {
+      // Player collides with wall, slows down
+      // Player collides clockwise whirly thing, if player clockwise then = terminalClockwiseSpeed else, slow down rotation speed
+      // Player collides counter-clockwise whirly thing, if player counter-clockwise then = -terminalClockwiseSpeed, slow down rotation speed
+      // Player collides travelator, player direction must = travelator direction
+      // 
+
       Velocity.X = 5 * Direction.X;
       Velocity.Y = 5 * Direction.Y;
 

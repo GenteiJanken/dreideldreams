@@ -16,6 +16,8 @@ namespace DreidelDreams
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
     Level level;
+    public static int ScreenWidth;
+    public static int ScreenHeight;
 
     public Game1()
     {
@@ -36,6 +38,8 @@ namespace DreidelDreams
       spriteBatch = new SpriteBatch(GraphicsDevice);
       level = new Level();
       level.LoadSprite(Content.Load<Texture2D>("dreidel"));
+      ScreenWidth = GraphicsDevice.Viewport.Width;
+      ScreenHeight = GraphicsDevice.Viewport.Height;
     }
 
     protected override void UnloadContent()

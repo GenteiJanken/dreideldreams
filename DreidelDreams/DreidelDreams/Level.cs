@@ -18,15 +18,28 @@ namespace DreidelDreams
     KeyboardState keyboard = Keyboard.GetState();
     KeyboardState prevKeyboard = Keyboard.GetState();
 
-    public Level() {
+    List<Wall> walls = new List<Wall>();
+
+    public Level()
+    {
       players.Add(new Dreidel(0, 0));
+
+      //for (int i = 0; i < 10; i++)
+      //  levelArray[i] = new char[10];
+
+      int w = Game1.ScreenWidth / 10;
+      int h = Game1.ScreenWidth / 10; 
+      for (int i = 0; i < walls.Count; i++)
+          walls[i] = new Wall(x,y,w,h);
     }
 
-    public void LoadSprite(Texture2D sprite) {
+    public void LoadSprite(Texture2D sprite)
+    {
       Sprite = sprite;
     }
 
-    public void Update(GameTime gameTime) {
+    public void Update(GameTime gameTime)
+    {
       // Keyboard Input
       prevKeyboard = keyboard;
       keyboard = Keyboard.GetState();
@@ -39,7 +52,7 @@ namespace DreidelDreams
       if (keyUp)
         players[0].Direction.Y = -1;
       if (keyDown)
-        players[0].Direction.Y = 1 ;
+        players[0].Direction.Y = 1;
       if (keyLeft)
         players[0].Direction.X = -1;
       if (keyRight)
@@ -52,7 +65,8 @@ namespace DreidelDreams
         item.Update(gameTime);
     }
 
-    public void Draw(SpriteBatch spriteBatch) {
+    public void Draw(SpriteBatch spriteBatch)
+    {
       foreach (Dreidel item in players)
         item.Draw(spriteBatch, Sprite);
     }
