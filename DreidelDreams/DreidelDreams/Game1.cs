@@ -15,6 +15,7 @@ namespace DreidelDreams
   {
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
+    Level level;
 
     public Game1()
     {
@@ -33,8 +34,8 @@ namespace DreidelDreams
     {
       // Create a new SpriteBatch, which can be used to draw textures.
       spriteBatch = new SpriteBatch(GraphicsDevice);
-
-      // TODO: use this.Content to load your game content here
+      level = new Level();
+      level.LoadSprite(Content.Load<Texture2D>("dreidel"));
     }
 
     protected override void UnloadContent()
@@ -48,7 +49,7 @@ namespace DreidelDreams
       if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
         this.Exit();
 
-      // TODO: Add your update logic here
+      level.Update(gameTime);
 
       base.Update(gameTime);
     }
@@ -56,9 +57,9 @@ namespace DreidelDreams
     protected override void Draw(GameTime gameTime)
     {
       GraphicsDevice.Clear(Color.CornflowerBlue);
-
-      // TODO: Add your drawing code here
-
+      spriteBatch.Begin();
+      level.Draw(spriteBatch);
+      spriteBatch.End();
       base.Draw(gameTime);
     }
   }
