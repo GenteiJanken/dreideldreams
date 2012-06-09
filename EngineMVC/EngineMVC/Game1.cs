@@ -8,16 +8,25 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using EngineMVC.Model;
+using EngineMVC.View;
+using EngineMVC.Controller;
 
-namespace DreidelDreams
+namespace EngineMVC
 {
   public class Game1 : Microsoft.Xna.Framework.Game
   {
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
-    Level level;
-    public static int ScreenWidth;
-    public static int ScreenHeight;
+    Texture2D blockTexture;
+
+    World world;
+
+    // Views
+    PlayerView playerView;
+
+    // Controllers
+    PlayerController player1Controller;
 
     public Game1()
     {
@@ -27,19 +36,23 @@ namespace DreidelDreams
 
     protected override void Initialize()
     {
-      // TODO: Add your initialization logic here
+      IsMouseVisible = true;
 
       base.Initialize();
     }
 
     protected override void LoadContent()
     {
-      // Create a new SpriteBatch, which can be used to draw textures.
       spriteBatch = new SpriteBatch(GraphicsDevice);
-      level = new Level();
-      level.LoadSprite(Content.Load<Texture2D>("dreidel"));
-      ScreenWidth = GraphicsDevice.Viewport.Width;
-      ScreenHeight = GraphicsDevice.Viewport.Height;
+      blockTexture = Content.Load<Texture2D>("block");
+
+      world = new World();
+
+      // Views
+      playerView = new PlayerView(world.player1, blockTexture);
+
+      // Controllers
+      player1Controller = new PlayerController(world.player1, InputType.Keyboard, PlayerIndex.One);
     }
 
     protected override void UnloadContent()
@@ -49,21 +62,25 @@ namespace DreidelDreams
 
     protected override void Update(GameTime gameTime)
     {
-      // Allows the game to exit
-      if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-        this.Exit();
+      world.Update(gameTime);
 
-      level.Update(gameTime);
+      // Controller .Control
+      player1Controller.Control(gameTime);
 
       base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-      GraphicsDevice.Clear(Color.CornflowerBlue);
+      GraphicsDevice.Clear(Color.Black);
+
       spriteBatch.Begin();
-      level.Draw(spriteBatch);
+
+      // View .Draw(spriteBatch)
+      playerView.Draw(spriteBatch);
+
       spriteBatch.End();
+
       base.Draw(gameTime);
     }
   }
