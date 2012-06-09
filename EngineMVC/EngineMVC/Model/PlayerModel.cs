@@ -8,12 +8,12 @@ namespace EngineMVC.Model
 {
   public class PlayerModel : Model
   {
-    public PlayerModel(World world, Vector2 position, int width, int height)
+    public PlayerModel(World world, Vector2 position, int w, int h)
       : base(world)
     {
-      this.Position = position;
-      this.width = width;
-      this.height = height;
+      Position = position;
+      width = w;
+      height = h;
     }
 
     public override void Update(GameTime gameTime)
@@ -46,6 +46,20 @@ namespace EngineMVC.Model
     {
       velocity.X *= x;
       velocity.Y *= y;
+    }
+
+    public Rectangle GetRect() {
+      return new Rectangle((int)Position.X, (int)Position.Y, width, height);
+    }
+
+    public bool Collides(Rectangle b) 
+    {
+      Rectangle a = new Rectangle((int)Position.X, (int)Position.Y, width, height);
+
+      if (a.Intersects(b))
+        return true;
+      else
+        return false;
     }
 
     public int width;

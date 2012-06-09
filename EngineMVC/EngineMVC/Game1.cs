@@ -19,11 +19,15 @@ namespace EngineMVC
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
     Texture2D blockTexture;
+    SpriteFont font;
 
     World world;
 
     // Views
     PlayerView playerView;
+    PlayerViewText playerViewText;
+    PlayerViewGrid playerViewGrid;
+    TileView tileView;
 
     // Controllers
     PlayerController player1Controller;
@@ -45,11 +49,15 @@ namespace EngineMVC
     {
       spriteBatch = new SpriteBatch(GraphicsDevice);
       blockTexture = Content.Load<Texture2D>("block");
+      font = Content.Load<SpriteFont>("genericFont");
 
       world = new World();
 
       // Views
       playerView = new PlayerView(world.player1, blockTexture);
+      playerViewText = new PlayerViewText(world.player1, font);
+      playerViewGrid = new PlayerViewGrid(world.player1, blockTexture);
+      tileView = new TileView(world.tiles, blockTexture);
 
       // Controllers
       player1Controller = new PlayerController(world.player1, InputType.Keyboard, PlayerIndex.One);
@@ -64,7 +72,7 @@ namespace EngineMVC
     {
       world.Update(gameTime);
 
-      // Controller .Control
+      // Controllers .Control
       player1Controller.Control(gameTime);
 
       base.Update(gameTime);
@@ -76,8 +84,11 @@ namespace EngineMVC
 
       spriteBatch.Begin();
 
-      // View .Draw(spriteBatch)
+      // Views .Draw(spriteBatch)
+      tileView.Draw(spriteBatch);
+      playerViewGrid.Draw(spriteBatch, 64 + 1);
       playerView.Draw(spriteBatch);
+      playerViewText.Draw(spriteBatch);
 
       spriteBatch.End();
 
