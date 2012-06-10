@@ -16,17 +16,13 @@ namespace EngineMVC.View
       this.sprite = sprite;
     }
 
-    public override void Draw(SpriteBatch spriteBatch) 
+    public override void Draw(SpriteBatch spriteBatch)
     {
-      // Not used
-    }
-
-    public void Draw(SpriteBatch spriteBatch, int tileSize)
-    {
+      int tileSize = 64+1;
       Rectangle DestRect = new Rectangle(
-        (int)(player.Position.X / tileSize) * tileSize,
-        (int)(player.Position.Y / tileSize) * tileSize,
-        tileSize-1, tileSize-1);
+        (int)((player.Position.X + player.width/2) / tileSize) * tileSize,
+        (int)((player.Position.Y + player.height/2) / tileSize) * tileSize,
+        tileSize - 1, tileSize - 1);
 
       spriteBatch.Draw(sprite, DestRect, Color.LawnGreen);
     }

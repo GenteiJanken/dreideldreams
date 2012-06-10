@@ -6,23 +6,40 @@ using Microsoft.Xna.Framework;
 
 namespace EngineMVC.Model
 {
-  public class PlayerModel : Model
+  public class BallModel : Model
   {
-    public PlayerModel(World world, Vector2 position, int w, int h)
+    public BallModel(World world, int x, int y, int w, int h)
       : base(world)
     {
-      Position = position;
+      this.world = world;
+      Position = new Vector2(x, y);
       width = w;
       height = h;
     }
 
+    public void setInitialDirection(Vector2 velocity){
+      this.velocity = velocity;
+    }
+
     public override void Update(GameTime gameTime)
     {
-      Position.X += velocity.X;
+      Position.X += velocity.X * speed * world.delta;
       ResolveX();
 
-      Position.Y += velocity.Y;
+      Position.Y += velocity.Y * speed * world.delta;
       ResolveY();
+
+      // Collision with boundaries
+      if (Position.X < 0 || Position.X + width > Game1.ScreenWidth)
+      {
+        Position.X += -velocity.X * speed * world.delta;
+        velocity.X = -velocity.X;
+      }
+      if (Position.Y < 0 || Position.Y + height > Game1.ScreenHeight)
+      {
+        Position.Y += -velocity.Y * speed * world.delta;
+        velocity.Y = -velocity.Y;
+      }
     }
 
     public void ResolveX()
@@ -42,6 +59,7 @@ namespace EngineMVC.Model
             Position.X += intersect.Width;
 
           a.X = (int)Math.Round(Position.X);
+          velocity.X = -velocity.X;
         }
       }
     }
@@ -62,35 +80,9 @@ namespace EngineMVC.Model
             Position.Y += intersect.Height;
 
           a.Y = (int)Math.Round(Position.Y);
+          velocity.Y = -velocity.Y;
         }
       }
-    }
-
-    // Methods for the controller
-    public void MoveUp(GameTime gameTime)
-    {
-      velocity.Y = world.delta * speed * -1;
-    }
-
-    public void MoveDown(GameTime gameTime)
-    {
-      velocity.Y = world.delta * speed * 1;
-    }
-
-    public void MoveLeft(GameTime gameTime)
-    {
-      velocity.X = world.delta * speed * -1;
-    }
-
-    public void MoveRight(GameTime gameTime)
-    {
-      velocity.X = world.delta * speed * 1;
-    }
-
-    public void Stop(int x, int y)
-    {
-      velocity.X *= x;
-      velocity.Y *= y;
     }
 
     public Rectangle GetRect()
@@ -100,13 +92,7 @@ namespace EngineMVC.Model
 
     public int width;
     public int height;
-    public float speed = 200; // pixels per second
+    public float speed = 300; // pixels per second
     public Vector2 velocity = Vector2.Zero;
-    public bool collision;
-  }
-
-  public enum PlayerAction
-  {
-    Nothing, MoveUp, MoveDown, MoveLeft, MoveRight
   }
 }

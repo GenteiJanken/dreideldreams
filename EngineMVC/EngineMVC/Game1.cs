@@ -18,6 +18,10 @@ namespace EngineMVC
   {
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
+
+    public static int ScreenWidth;
+    public static int ScreenHeight;
+
     Texture2D blockTexture;
     SpriteFont font;
 
@@ -25,6 +29,7 @@ namespace EngineMVC
 
     // Views
     PlayerView playerView;
+    BallView ballView;
     PlayerViewText playerViewText;
     PlayerViewGrid playerViewGrid;
     TileView tileView;
@@ -48,19 +53,26 @@ namespace EngineMVC
     protected override void LoadContent()
     {
       spriteBatch = new SpriteBatch(GraphicsDevice);
+
+      ScreenWidth = GraphicsDevice.Viewport.Width;
+      ScreenHeight = GraphicsDevice.Viewport.Height;
+
       blockTexture = Content.Load<Texture2D>("block");
       font = Content.Load<SpriteFont>("genericFont");
 
+      // World
       world = new World();
+
+      // Controllers
+      player1Controller = new PlayerController(world.player1, InputType.Keyboard, PlayerIndex.One);
 
       // Views
       playerView = new PlayerView(world.player1, blockTexture);
       playerViewText = new PlayerViewText(world.player1, font);
       playerViewGrid = new PlayerViewGrid(world.player1, blockTexture);
       tileView = new TileView(world.tiles, blockTexture);
+      ballView = new BallView(world.ball, blockTexture);
 
-      // Controllers
-      player1Controller = new PlayerController(world.player1, InputType.Keyboard, PlayerIndex.One);
     }
 
     protected override void UnloadContent()
@@ -86,9 +98,10 @@ namespace EngineMVC
 
       // Views .Draw(spriteBatch)
       tileView.Draw(spriteBatch);
-      playerViewGrid.Draw(spriteBatch, 64 + 1);
       playerView.Draw(spriteBatch);
+      playerViewGrid.Draw(spriteBatch);
       playerViewText.Draw(spriteBatch);
+      ballView.Draw(spriteBatch);
 
       spriteBatch.End();
 

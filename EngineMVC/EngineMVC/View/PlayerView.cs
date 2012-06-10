@@ -19,7 +19,11 @@ namespace EngineMVC.View
     public override void Draw(SpriteBatch spriteBatch)
     {
       Rectangle DestRect = new Rectangle((int)player.Position.X, (int)player.Position.Y, player.width, player.height);
-      spriteBatch.Draw(sprite, DestRect, Color.Green);
+
+      if (player.collision)
+        spriteBatch.Draw(sprite, DestRect, Color.Red);
+      else
+        spriteBatch.Draw(sprite, DestRect, Color.Green);
     }
 
     private PlayerModel player;

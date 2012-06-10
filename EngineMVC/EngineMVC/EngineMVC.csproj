@@ -110,6 +110,7 @@
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\InputManager.cs" />
     <Compile Include="Controller\PlayerController.cs" />
+    <Compile Include="Model\BallModel.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\PlayerModel.cs" />
     <Compile Include="Model\TileModel.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="View\BallView.cs" />
     <Compile Include="View\PlayerViewGrid.cs" />
     <Compile Include="View\PlayerView.cs" />
     <Compile Include="View\PlayerViewText.cs" />

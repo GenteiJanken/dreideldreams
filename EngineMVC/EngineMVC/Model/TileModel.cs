@@ -18,6 +18,11 @@ namespace EngineMVC.Model
 
     public override void Update(GameTime gameTime) { }
 
+    public Rectangle GetRect()
+    {
+      return new Rectangle((int)Math.Round(Position.X), (int)Math.Round(Position.Y), width, height);
+    }
+
     public int width;
     public int height;
   }

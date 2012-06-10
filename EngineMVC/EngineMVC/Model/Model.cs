@@ -14,7 +14,8 @@ namespace EngineMVC.Model
 
     public abstract void Update(GameTime gameTime);
 
-    public virtual Vector2 Position { get; set; }
+    // public virtual Vector2 Position { get; set; }
+    public Vector2 Position;
     protected World world;
   }
 }
