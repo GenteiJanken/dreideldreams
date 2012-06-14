@@ -9,6 +9,10 @@ namespace EngineMVC.Controller
 {
   public class PlayerController : Controller
   {
+    private InputManager inputManager;
+    private PlayerModel player;
+    private Dictionary<PlayerAction, Inputs> keyMap;
+
     public PlayerController(PlayerModel player, InputType type, PlayerIndex playerIndex)
     {
       this.player = player;
@@ -43,10 +47,5 @@ namespace EngineMVC.Controller
         && inputManager.IsInputUp(Inputs.Right))
         player.Stop(0, 1);
     }
-
-    private InputManager inputManager;
-    private PlayerModel player;
-    private Dictionary<PlayerAction, Inputs> keyMap;
-
   }
 }

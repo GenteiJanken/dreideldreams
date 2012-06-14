@@ -36,6 +36,7 @@ namespace EngineMVC
 
     // Controllers
     PlayerController player1Controller;
+    MouseController mouseController;
 
     public Game1()
     {
@@ -65,6 +66,7 @@ namespace EngineMVC
 
       // Controllers
       player1Controller = new PlayerController(world.player1, InputType.Keyboard, PlayerIndex.One);
+      mouseController = new MouseController(world, InputType.Mouse, PlayerIndex.One);
 
       // Views
       playerView = new PlayerView(world.player1, blockTexture);
@@ -86,6 +88,7 @@ namespace EngineMVC
 
       // Controllers .Control
       player1Controller.Control(gameTime);
+      mouseController.Control(gameTime);
 
       base.Update(gameTime);
     }

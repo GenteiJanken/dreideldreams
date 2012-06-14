@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Controller\InputManager.cs" />
+    <Compile Include="Controller\MouseController.cs" />
     <Compile Include="Controller\PlayerController.cs" />
     <Compile Include="Model\BallModel.cs" />
     <Compile Include="Model\Model.cs" />

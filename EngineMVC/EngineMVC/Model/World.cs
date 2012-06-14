@@ -24,19 +24,23 @@ namespace EngineMVC.Model
 
       int w = 64, h = 64, space = 1;
 
-      //for (int x = 0; x < 12; x++)
-      //  for (int y = 0; y < 12; y++)
-      //    tiles.Add(new TileModel(this, (w + space) * x, (h + space) * y, w, h));
-
       tiles.Add(new TileModel(this, (w + space) * 0, (h + space) * 0, w, h));
       tiles.Add(new TileModel(this, (w + space) * 1, (h + space) * 0, w, h));
       tiles.Add(new TileModel(this, (w + space) * 2, (h + space) * 0, w, h));
       tiles.Add(new TileModel(this, (w + space) * 3, (h + space) * 0, w, h));
     }
 
+    public void AddTile(int mx, int my, int w, int h, int space)
+    {
+      int x = mx / (w + space);
+      int y = my / (h + space);
+      tiles.Add(new TileModel(this, (w + space) * x, (h + space) * y, w, h));
+    }
+
     public void Update(GameTime gameTime)
     {
       delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+      GameTime = gameTime.TotalGameTime;
 
       // Object Updates
       player1.Update(gameTime);
@@ -52,5 +56,11 @@ namespace EngineMVC.Model
     public Random random;
     public List<TileModel> tiles = new List<TileModel>();
     public float delta;
+    public static TimeSpan GameTime;
+  }
+
+  public enum WorldAction 
+  {
+    AddBall, AddTile
   }
 }
