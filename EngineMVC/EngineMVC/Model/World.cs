@@ -34,7 +34,34 @@ namespace DreidelDreams.Model
     {
       int x = mx / (w + space);
       int y = my / (h + space);
-      tiles.Add(new TileModel(this, (w + space) * x, (h + space) * y, w, h));
+      bool tileExists = false;
+
+      // Check if tile already exists
+      foreach (TileModel item in tiles)
+        if ((item.Position.X / (w + space)) == x && (item.Position.Y / (h + space)) == y)
+          tileExists = true;
+
+      if (!tileExists)
+      {
+        tiles.Add(new TileModel(this, (w + space) * x, (h + space) * y, w, h));
+        Console.WriteLine("Added Tile");
+      }
+    }
+    public void RemoveTile(int mx, int my, int w, int h, int space) 
+    {
+      int x = mx / (w + space);
+      int y = my / (h + space);
+
+      // Check if tile already exists
+      for (int i = 0; i < tiles.Count; i++)
+      {
+        if ((tiles[i].Position.X / (w + space)) == x && (tiles[i].Position.Y / (h + space)) == y)
+        {
+          Console.WriteLine("Removed Tile");
+          tiles.RemoveAt(i);
+          break;
+        }
+      }
     }
 
     public void Update(GameTime gameTime)
@@ -61,6 +88,6 @@ namespace DreidelDreams.Model
 
   public enum WorldAction 
   {
-    AddBall, AddTile
+    AddBall, AddTile, RemoveTile
   }
 }
