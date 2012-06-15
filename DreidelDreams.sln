@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineMVC", "EngineMVC\EngineMVC\EngineMVC.csproj", "{E7B241B3-89B4-44A8-B4C8-0CDD63666C68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dreidel", "EngineMVC\EngineMVC\Dreidel.csproj", "{E7B241B3-89B4-44A8-B4C8-0CDD63666C68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineMVCContent", "EngineMVC\EngineMVCContent\EngineMVCContent.contentproj", "{24CF0647-BE4C-4B17-BAB6-6753D7D53D62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreidelDreamsContent", "EngineMVC\EngineMVCContent\DreidelDreamsContent.contentproj", "{24CF0647-BE4C-4B17-BAB6-6753D7D53D62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

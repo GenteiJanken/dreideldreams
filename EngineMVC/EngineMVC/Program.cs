@@ -1,6 +1,6 @@
 using System;
 
-namespace EngineMVC
+namespace DreidelDreams
 {
 #if WINDOWS || XBOX
     static class Program

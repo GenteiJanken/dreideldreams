@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using EngineMVC.Model;
+using DreidelDreams.Model;
 
-namespace EngineMVC.Controller
+namespace DreidelDreams.Controller
 {
   public class PlayerController : Controller
   {

@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace EngineMVC.Controller
+namespace DreidelDreams.Controller
 {
   class InputManager
   {

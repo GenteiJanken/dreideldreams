@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace EngineMVC.Model
+namespace DreidelDreams.Model
 {
   public abstract class Model
   {

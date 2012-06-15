@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using EngineMVC.Model;
+using DreidelDreams.Model;
 
-namespace EngineMVC.View
+namespace DreidelDreams.View
 {
   public class PlayerView : View
   {

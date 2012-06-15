@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EngineMVC</RootNamespace>
-    <AssemblyName>EngineMVC</AssemblyName>
+    <RootNamespace>DreidelDreams</RootNamespace>
+    <AssemblyName>DreidelDreams</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
@@ -131,9 +131,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EngineMVCContent\EngineMVCContent.contentproj">
-      <Name>EngineMVCContent</Name>
+    <ProjectReference Include="..\EngineMVCContent\DreidelDreamsContent.contentproj">
+      <Name>DreidelDreamsContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{24CF0647-BE4C-4B17-BAB6-6753D7D53D62}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

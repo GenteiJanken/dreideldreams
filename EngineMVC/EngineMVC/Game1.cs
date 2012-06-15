@@ -8,11 +8,11 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using EngineMVC.Model;
-using EngineMVC.View;
-using EngineMVC.Controller;
+using DreidelDreams.Model;
+using DreidelDreams.View;
+using DreidelDreams.Controller;
 
-namespace EngineMVC
+namespace DreidelDreams
 {
   public class Game1 : Microsoft.Xna.Framework.Game
   {

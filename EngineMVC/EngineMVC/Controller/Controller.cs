@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace EngineMVC.Controller
+namespace DreidelDreams.Controller
 {
   public abstract class Controller
   {
